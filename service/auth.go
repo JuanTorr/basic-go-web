@@ -21,5 +21,5 @@ func AuthenticateUser(
 
 //RegisterUser registers the given user
 func RegisterUser(userDao UserDaoService, u model.User) error {
-	return userDao.Register(u)
+	return userDao.Register(&u)
 }

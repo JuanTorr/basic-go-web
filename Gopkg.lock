@@ -107,6 +107,14 @@
   revision = "57fdcb988a5c543893cc61bce354a6e24ab70022"
 
 [[projects]]
+  digest = "1:4a49346ca45376a2bba679ca0e83bec949d780d4e927931317904bad482943ec"
+  name = "github.com/mattn/go-sqlite3"
+  packages = ["."]
+  pruneopts = "UT"
+  revision = "c7c4067b79cc51e6dfdcef5c702e74b1e0fa7c75"
+  version = "v1.10.0"
+
+[[projects]]
   digest = "1:404d5b8e8009389747c8c5583d9c9cc28582c0783a9f47851b012dfc926b9b34"
   name = "github.com/memcachier/mc"
   packages = ["."]
@@ -160,6 +168,7 @@
     "github.com/gin-contrib/sessions/memcached",
     "github.com/gin-gonic/gin",
     "github.com/lib/pq",
+    "github.com/mattn/go-sqlite3",
     "github.com/memcachier/mc",
     "github.com/unrolled/secure",
   ]

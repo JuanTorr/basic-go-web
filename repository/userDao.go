@@ -2,6 +2,7 @@ package repository
 
 import (
 	"database/sql"
+	"fmt"
 
 	"github.com/JuanTorr/project/model"
 	"github.com/JuanTorr/project/perrors"
@@ -16,20 +17,20 @@ type UserDao struct {
 func (dao UserDao) GetByEmail(email string) (u model.User, err error) {
 	rows, err := dao.DB.Query(`
 		SELECT
-			test.user.user_id,
-			test.user.email,
-			test.user.password,
-			test.user.name,
-			test.user.surname,
-			test.role.role_id,
-			test.role.name,
-			test.permission.permission_id,
-			test.permission.name
-		FROM test.user
-		INNER JOIN test.role ON test.role.role_id = test.user.role_id
-		INNER JOIN test.role_permission ON test.role_permission.role_id = test.role.role_id
-		INNER JOIN test.permission ON test.permission.permission_id = test.role_permission.permission_id
-		WHERE test.user.email = $1
+			user.tus_id,
+			user.tus_email,
+			user.tus_password,
+			user.tus_name,
+			user.tus_surname,
+			role.tro_id,
+			role.tro_name,
+			permission.tpe_id,
+			permission.tpe_name
+		FROM tuser user
+		INNER JOIN trole role ON role.tro_id = user.tus_role_id
+		INNER JOIN rrol_permission role_permission ON role_permission.rrp_role_id = role.tro_id
+		INNER JOIN tpermission permission ON permission.tpe_id = role_permission.rrp_permission_id
+		WHERE user.tus_email = ?
 	`, email)
 	if err != nil {
 		return
@@ -52,19 +53,19 @@ func (dao UserDao) GetByEmail(email string) (u model.User, err error) {
 }
 
 //Register saves the user in the db
-func (dao UserDao) Register(u model.User) (err error) {
+func (dao UserDao) Register(u *model.User) (err error) {
 	query := `INSERT INTO
-		test.user (email, password, name, surname, role_id)
-		VALUES ($1, $2, $3, $4, $5) RETURNING user_id`
-	stmt, err := dao.DB.Prepare(query)
+		tuser (tus_email, tus_password, tus_name, tus_surname, tus_role_id)
+		VALUES (?,?,?,?,?)`
+	result, err := dao.DB.Exec(query, u.Email, u.Password, u.Name, u.Surname, u.Role.ID)
 	if err != nil {
 		return
 	}
-	defer stmt.Close()
-	row := stmt.QueryRow(u.Email, u.Password, u.Name, u.Surname, u.Role.ID)
-	err = row.Scan(&u.ID)
+	v, err := result.LastInsertId()
 	if err != nil {
 		return
 	}
+	(*u).ID = int(v)
+	fmt.Printf("\n*********************\n%+v\n", u)
 	return
 }

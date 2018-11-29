@@ -1,21 +1,23 @@
 package main
 
 import (
-	"database/sql"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-contrib/sessions/memcached"
 	"github.com/gin-gonic/gin"
 	"github.com/memcachier/mc"
 
-	_ "github.com/lib/pq"
-
+	"github.com/JuanTorr/project/db"
 	"github.com/JuanTorr/project/routes"
+
+	_ "github.com/mattn/go-sqlite3"
 )
 
 func main() {
-	db := getDB()
+	db, err := db.GetOrCreateDB()
 	defer db.Close()
+	if err != nil {
+		panic(err)
+	}
 
 	r := gin.Default()
 	client := mc.NewMC("localhost:11211", "", "")
@@ -31,17 +33,4 @@ func main() {
 	//http://localhost:8080/api/session
 	go r.Run(":8080")
 	r.RunTLS(":3000", "assets/certs/server.pem", "assets/certs/server.key")
-}
-
-func getDB() *sql.DB {
-	conData := "host=localhost port=5432 user=postgres password=XXX dbname=sistema sslmode=disable"
-	db, err := sql.Open("postgres", conData)
-	if err != nil {
-		panic(err)
-	}
-	err = db.Ping()
-	if err != nil {
-		panic(err)
-	}
-	return db
 }
