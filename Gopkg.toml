@@ -24,7 +24,7 @@
 #   go-tests = true
 #   unused-packages = true
 
-required=["github.com/unrolled/secure"]
+required=["github.com/unrolled/secure", "github.com/lib/pq"]
 
 [[constraint]]
   name = "github.com/gin-gonic/gin"

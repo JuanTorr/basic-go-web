@@ -81,12 +81,23 @@
   version = "v1.1.3"
 
 [[projects]]
-  digest = "1:be97e109f627d3ba8edfef50c9c74f0d0c17cbe3a2e924a8985e4804a894f282"
+  digest = "1:9a855f51d5eaf25dafc30cf0ad5844d5fb6aacec4ceb98a04ed2964562edbc0c"
   name = "github.com/json-iterator/go"
   packages = ["."]
   pruneopts = "UT"
   revision = "36b14963da70d11297d313183d7e6388c8510e1e"
   version = "1.0.0"
+
+[[projects]]
+  digest = "1:8ef506fc2bb9ced9b151dafa592d4046063d744c646c1bbe801982ce87e4bc24"
+  name = "github.com/lib/pq"
+  packages = [
+    ".",
+    "oid",
+  ]
+  pruneopts = "UT"
+  revision = "4ded0e9383f75c197b3a2aaa6d590ac52df6fd79"
+  version = "v1.0.0"
 
 [[projects]]
   digest = "1:fa610f9fe6a93f4a75e64c83673dfff9bf1a34bbb21e6102021b6bc7850834a3"
@@ -148,6 +159,7 @@
     "github.com/gin-contrib/sessions",
     "github.com/gin-contrib/sessions/memcached",
     "github.com/gin-gonic/gin",
+    "github.com/lib/pq",
     "github.com/memcachier/mc",
     "github.com/unrolled/secure",
   ]
