@@ -8,9 +8,9 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/memcachier/mc"
 
-	"github.com/JuanTorr/project/routes"
-
 	_ "github.com/lib/pq"
+
+	"github.com/JuanTorr/project/routes"
 )
 
 func main() {

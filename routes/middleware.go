@@ -3,9 +3,10 @@ package routes
 import (
 	"database/sql"
 
-	"github.com/JuanTorr/project/controller/analytics"
 	"github.com/gin-gonic/gin"
 	"github.com/unrolled/secure"
+
+	"github.com/JuanTorr/project/controller/analytics"
 )
 
 //Analitycs monitoring module

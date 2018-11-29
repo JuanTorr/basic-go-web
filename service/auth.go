@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/JuanTorr/project/bberrors"
 	"github.com/JuanTorr/project/model"
+	"github.com/JuanTorr/project/perrors"
 )
 
 //AuthenticateUser validate if the given email and password match
@@ -14,7 +14,7 @@ func AuthenticateUser(
 		return
 	}
 	if u.Password != password {
-		return u, bberrors.ErrAuth
+		return u, perrors.NewErrAuth("Password mismatch")
 	}
 	return u, nil
 }

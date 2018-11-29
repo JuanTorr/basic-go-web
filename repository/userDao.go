@@ -2,9 +2,9 @@ package repository
 
 import (
 	"database/sql"
-	"log"
 
 	"github.com/JuanTorr/project/model"
+	"github.com/JuanTorr/project/perrors"
 )
 
 //UserDao user data access object
@@ -35,7 +35,9 @@ func (dao UserDao) GetByEmail(email string) (u model.User, err error) {
 		return
 	}
 	defer rows.Close()
+	count := 0
 	for rows.Next() {
+		count++
 		p := model.Permission{}
 		err = rows.Scan(&u.ID, &u.Email, &u.Password, &u.Name, &u.Surname, &u.Role.ID, &u.Role.Name, &p.ID, &p.Name)
 		if err != nil {
@@ -43,17 +45,20 @@ func (dao UserDao) GetByEmail(email string) (u model.User, err error) {
 		}
 		u.Role.AddPermission(p)
 	}
+	if count == 0 {
+		err = perrors.NewErrRegNotFound("User not found", email)
+	}
 	return
 }
 
 //Register saves the user in the db
 func (dao UserDao) Register(u model.User) (err error) {
-	query := `
-		INSERT INTO test.user (email, password, name, surname, role_id)
+	query := `INSERT INTO
+		test.user (email, password, name, surname, role_id)
 		VALUES ($1, $2, $3, $4, $5) RETURNING user_id`
 	stmt, err := dao.DB.Prepare(query)
 	if err != nil {
-		log.Fatal(err)
+		return
 	}
 	defer stmt.Close()
 	row := stmt.QueryRow(u.Email, u.Password, u.Name, u.Surname, u.Role.ID)

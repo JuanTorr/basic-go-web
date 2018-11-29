@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/JuanTorr/project/bberrors"
-	"github.com/JuanTorr/project/model"
-	"github.com/JuanTorr/project/repository"
-	"github.com/JuanTorr/project/service"
-
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
+
+	"github.com/JuanTorr/project/model"
+	"github.com/JuanTorr/project/perrors"
+	"github.com/JuanTorr/project/repository"
+	"github.com/JuanTorr/project/service"
 )
 
 //Session handler with a simple session usage example
@@ -42,9 +42,10 @@ func Signin(db *sql.DB) gin.HandlerFunc {
 		userDao := repository.UserDao{DB: db}
 		u, err := service.AuthenticateUser(userDao, email, password)
 		if err != nil {
-			if err == bberrors.ErrAuth || err == bberrors.ErrRegNotFound {
-				c.JSON(http.StatusUnauthorized, "Ivalid auth")
-			} else {
+			switch err.(type) {
+			case perrors.ErrAuth, perrors.ErrRegNotFound:
+				c.JSON(http.StatusUnauthorized, err.Error())
+			default:
 				c.JSON(http.StatusInternalServerError, err.Error())
 			}
 			return

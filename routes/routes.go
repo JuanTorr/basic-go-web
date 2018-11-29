@@ -3,8 +3,9 @@ package routes
 import (
 	"database/sql"
 
-	"github.com/JuanTorr/project/controller/api"
 	"github.com/gin-gonic/gin"
+
+	"github.com/JuanTorr/project/controller/api"
 )
 
 //API api
