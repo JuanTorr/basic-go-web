@@ -5,7 +5,7 @@ import (
 	"fmt"
 
 	"github.com/JuanTorr/basic-go-web/model"
-	"github.com/JuanTorr/basic-go-web/perrors"
+	"github.com/JuanTorr/basic-go-web/utils/bgwerrors"
 )
 
 //UserDao user data access object
@@ -47,7 +47,7 @@ func (dao UserDao) GetByEmail(email string) (u model.User, err error) {
 		u.Role.AddPermission(p)
 	}
 	if count == 0 {
-		err = perrors.NewErrRegNotFound("User not found", email)
+		err = bgwerrors.NewErrRegNotFound("User not found", email)
 	}
 	return
 }

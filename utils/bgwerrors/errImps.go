@@ -1,4 +1,4 @@
-package perrors
+package bgwerrors
 
 import "fmt"
 

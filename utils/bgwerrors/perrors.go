@@ -1,4 +1,4 @@
-package perrors
+package bgwerrors
 
 //ErrMessage define los datos de un error
 type ErrMessage struct {

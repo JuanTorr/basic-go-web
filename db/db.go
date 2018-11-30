@@ -6,8 +6,6 @@ import (
 	"os"
 )
 
-var dbpath = "./database.db"
-
 //GetOrCreateDB creates an sqlite database
 func GetOrCreateDB() (db *sql.DB, err error) {
 	_, err = os.Stat("./database.db")
@@ -18,7 +16,7 @@ func GetOrCreateDB() (db *sql.DB, err error) {
 	}
 	if dbNotExists {
 		var dbSchema []byte
-		dbSchema, err = ioutil.ReadFile("db/dbschema.sql")
+		dbSchema, err = ioutil.ReadFile("./assets/dbschema.sql")
 		if err != nil {
 			return
 		}

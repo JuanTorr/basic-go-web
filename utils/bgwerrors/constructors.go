@@ -1,4 +1,4 @@
-package perrors
+package bgwerrors
 
 //NewErrRegNotFound contructor del error NewErrRegNotFound
 func NewErrRegNotFound(s ...string) (err ErrRegNotFound) {

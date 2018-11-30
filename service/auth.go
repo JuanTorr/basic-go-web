@@ -2,7 +2,7 @@ package service
 
 import (
 	"github.com/JuanTorr/basic-go-web/model"
-	"github.com/JuanTorr/basic-go-web/perrors"
+	"github.com/JuanTorr/basic-go-web/utils/bgwerrors"
 )
 
 //AuthenticateUser validate if the given email and password match
@@ -14,7 +14,7 @@ func AuthenticateUser(
 		return
 	}
 	if u.Password != password {
-		return u, perrors.NewErrAuth("Password mismatch")
+		return u, bgwerrors.NewErrAuth("Password mismatch")
 	}
 	return u, nil
 }

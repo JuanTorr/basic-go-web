@@ -2,9 +2,8 @@ package main
 
 import (
 	"github.com/gin-contrib/sessions"
-	"github.com/gin-contrib/sessions/memcached"
+	"github.com/gin-contrib/sessions/cookie"
 	"github.com/gin-gonic/gin"
-	"github.com/memcachier/mc"
 
 	"github.com/JuanTorr/basic-go-web/db"
 	"github.com/JuanTorr/basic-go-web/routes"
@@ -20,9 +19,8 @@ func main() {
 	}
 
 	r := gin.Default()
-	client := mc.NewMC("localhost:11211", "", "")
-	store := memcached.NewMemcacheStore(client, "", []byte("secret"))
-	r.Use(sessions.Sessions("sessions", store))
+	store := cookie.NewStore([]byte("secret"))
+	r.Use(sessions.Sessions("mysession", store))
 
 	routes.Analitycs(r, db)
 	routes.RedirectHTTPS(r)
@@ -32,5 +30,5 @@ func main() {
 
 	//http://localhost:8080/api/session
 	go r.Run(":8080")
-	r.RunTLS(":3000", "assets/certs/server.pem", "assets/certs/server.key")
+	r.RunTLS(":3000", "./assets/certs/server.pem", "./assets/certs/server.key")
 }

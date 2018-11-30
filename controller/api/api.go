@@ -10,9 +10,9 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"github.com/JuanTorr/basic-go-web/model"
-	"github.com/JuanTorr/basic-go-web/perrors"
 	"github.com/JuanTorr/basic-go-web/repository"
 	"github.com/JuanTorr/basic-go-web/service"
+	"github.com/JuanTorr/basic-go-web/utils/bgwerrors"
 )
 
 //Session handler with a simple session usage example
@@ -43,7 +43,7 @@ func Signin(db *sql.DB) gin.HandlerFunc {
 		u, err := service.AuthenticateUser(userDao, email, password)
 		if err != nil {
 			switch err.(type) {
-			case perrors.ErrAuth, perrors.ErrRegNotFound:
+			case bgwerrors.ErrAuth, bgwerrors.ErrRegNotFound:
 				c.JSON(http.StatusUnauthorized, err.Error())
 			default:
 				c.JSON(http.StatusInternalServerError, err.Error())

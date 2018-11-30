@@ -3,27 +3,11 @@
 
 [[projects]]
   branch = "master"
-  digest = "1:f98385a9b77f6cacae716a59c04e6ac374d101466d4369c4e8cc706a39c4bb2e"
-  name = "github.com/bradfitz/gomemcache"
-  packages = ["memcache"]
-  pruneopts = "UT"
-  revision = "bc664df9673713a0ccf26e3b55a673ec7301088b"
-
-[[projects]]
-  branch = "master"
-  digest = "1:6652612a618844a7abd57250048f50dc456e784cdbbc81e02a0f6771948a43a1"
-  name = "github.com/bradleypeabody/gorilla-sessions-memcache"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "659414f458e1a316113a5ca21c9964dee6655454"
-
-[[projects]]
-  branch = "master"
-  digest = "1:a68d11dd940bf99f4ce19e640fd4f447c46d84956e5cfb2e3258cf62202b7b6f"
+  digest = "1:cd203a28422630fedc57966b90b6e39ff38b4c553bee2282c9032f41ba7a0e3e"
   name = "github.com/gin-contrib/sessions"
   packages = [
     ".",
-    "memcached",
+    "cookie",
   ]
   pruneopts = "UT"
   revision = "58cbcf30135cc04c55e4499757142265d58e62d6"
@@ -104,14 +88,6 @@
   version = "v1.10.0"
 
 [[projects]]
-  digest = "1:404d5b8e8009389747c8c5583d9c9cc28582c0783a9f47851b012dfc926b9b34"
-  name = "github.com/memcachier/mc"
-  packages = ["."]
-  pruneopts = "UT"
-  revision = "d03056eefd08e4d7f92630800bab4e431bc6a5e7"
-  version = "v2.0.1"
-
-[[projects]]
   digest = "1:c268acaa4a4d94a467980e5e91452eb61c460145765293dc0aed48e5e9919cc6"
   name = "github.com/ugorji/go"
   packages = ["codec"]
@@ -154,10 +130,9 @@
   analyzer-version = 1
   input-imports = [
     "github.com/gin-contrib/sessions",
-    "github.com/gin-contrib/sessions/memcached",
+    "github.com/gin-contrib/sessions/cookie",
     "github.com/gin-gonic/gin",
     "github.com/mattn/go-sqlite3",
-    "github.com/memcachier/mc",
     "github.com/unrolled/secure",
   ]
   solver-name = "gps-cdcl"
