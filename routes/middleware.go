@@ -6,7 +6,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/unrolled/secure"
 
-	"github.com/JuanTorr/project/controller/analytics"
+	"github.com/JuanTorr/basic-go-web/controller/analytics"
 )
 
 //Analitycs monitoring module

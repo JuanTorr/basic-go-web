@@ -4,8 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
-	"github.com/JuanTorr/project/model"
-	"github.com/JuanTorr/project/perrors"
+	"github.com/JuanTorr/basic-go-web/model"
+	"github.com/JuanTorr/basic-go-web/perrors"
 )
 
 //UserDao user data access object

@@ -9,10 +9,10 @@ import (
 	"github.com/gin-contrib/sessions"
 	"github.com/gin-gonic/gin"
 
-	"github.com/JuanTorr/project/model"
-	"github.com/JuanTorr/project/perrors"
-	"github.com/JuanTorr/project/repository"
-	"github.com/JuanTorr/project/service"
+	"github.com/JuanTorr/basic-go-web/model"
+	"github.com/JuanTorr/basic-go-web/perrors"
+	"github.com/JuanTorr/basic-go-web/repository"
+	"github.com/JuanTorr/basic-go-web/service"
 )
 
 //Session handler with a simple session usage example

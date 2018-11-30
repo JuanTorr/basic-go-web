@@ -6,8 +6,8 @@ import (
 	"github.com/gin-gonic/gin"
 	"github.com/memcachier/mc"
 
-	"github.com/JuanTorr/project/db"
-	"github.com/JuanTorr/project/routes"
+	"github.com/JuanTorr/basic-go-web/db"
+	"github.com/JuanTorr/basic-go-web/routes"
 
 	_ "github.com/mattn/go-sqlite3"
 )

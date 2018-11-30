@@ -5,7 +5,7 @@ Basic project structure for a go web app
 ## Requisites
   * [MinGW-w64](https://sourceforge.net/projects/mingw-w64/) (for sqlite)
   * [Dep](https://github.com/golang/dep)
-  
+
 ## Initialize project
 
 `dep ensure`
@@ -17,4 +17,4 @@ Basic project structure for a go web app
 
 ## License
 
-Code released under the [MIT License.](https://github.com/JuanTorr/project/blob/master/LICENSE)
+Code released under the [MIT License.](https://github.com/JuanTorr/basic-go-web/blob/master/LICENSE)

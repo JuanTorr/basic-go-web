@@ -5,7 +5,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/JuanTorr/project/controller/api"
+	"github.com/JuanTorr/basic-go-web/controller/api"
 )
 
 //API api

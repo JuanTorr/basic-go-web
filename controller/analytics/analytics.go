@@ -1,8 +1,8 @@
 package analytics
 
 import (
-	anRepo "github.com/JuanTorr/project/repository/analyticsrepository"
-	anservice "github.com/JuanTorr/project/service/analyticsservice"
+	anRepo "github.com/JuanTorr/basic-go-web/repository/analyticsrepository"
+	anservice "github.com/JuanTorr/basic-go-web/service/analyticsservice"
 
 	"github.com/gin-gonic/gin"
 )

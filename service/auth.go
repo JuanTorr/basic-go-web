@@ -1,8 +1,8 @@
 package service
 
 import (
-	"github.com/JuanTorr/project/model"
-	"github.com/JuanTorr/project/perrors"
+	"github.com/JuanTorr/basic-go-web/model"
+	"github.com/JuanTorr/basic-go-web/perrors"
 )
 
 //AuthenticateUser validate if the given email and password match

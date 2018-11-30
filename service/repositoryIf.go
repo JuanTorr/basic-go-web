@@ -1,6 +1,6 @@
 package service
 
-import "github.com/JuanTorr/project/model"
+import "github.com/JuanTorr/basic-go-web/model"
 
 //UserDaoService service to get user's information
 type UserDaoService interface {
